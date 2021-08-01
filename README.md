@@ -35,10 +35,30 @@ For this exercise I went for the NoSQL approach: both approaches works well for 
 ```
 In case you are running the script multiple times remove the container first
 ```
-docker remove quotation-db
+docker rm quotation-db
 ```
 - import dummy data: copy content from script ```./neo4j/data.cypher``` in the neo4j browser and run the query
-- execute ```npm run start``` in ```graphql-api``` folder
+- change to folder ```graphql-api```
+- create ```.env``` file in folder ```graphql-api/api``` with content:
+```
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USER=neo4j
+NEO4J_PASSWORD=s3cr3t
+
+# Uncomment this line to specify a specific Neo4j database (v4.x+ only)
+#NEO4J_DATABASE=neo4j
+
+GRAPHQL_SERVER_HOST=0.0.0.0
+GRAPHQL_SERVER_PORT=4001
+GRAPHQL_SERVER_PATH=/graphql
+```
+- execute ```npm install``` (and ignore warnings)
+- execute ```npm run start```
 
 ## How to test the API locally
 The browser to test the GraphQL API can be accessed here: http://0.0.0.0:4001/graphql
+
+# Troubleshoot
+
+## npm ERR! code ELIFECYCLE
+Follow the instructions https://stackoverflow.com/questions/42308879/how-to-solve-npm-error-npm-err-code-elifecycle for the folders ```graphql-api``` and ```graphql-api/api```

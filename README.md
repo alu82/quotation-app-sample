@@ -58,6 +58,23 @@ GRAPHQL_SERVER_PATH=/graphql
 ## How to test the API locally
 The browser to test the GraphQL API can be accessed here: http://0.0.0.0:4001/graphql
 
+### Sample query
+```
+{
+  institutes {
+    name, 
+    authors {
+      name, 
+      surName, 
+      papers {
+        title, 
+        publication
+      }
+    }
+  }
+}
+```
+
 # Troubleshoot
 
 ## npm ERR! code ELIFECYCLE
